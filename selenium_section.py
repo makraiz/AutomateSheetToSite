@@ -27,7 +27,7 @@ def fill_name(driver, user_info):
     driver.implicitly_wait(4)
     driver.find_element(By.ID, "recipient_name").send_keys(user_info['name'])
     driver.find_element(By.ID, "recipient_email").send_keys(user_info['email'])
-    driver.find_element(By.NAME, "commit").click()
+    driver.find_element(By.NAME, "button").click()
     return
 
 
@@ -35,9 +35,9 @@ def fill_sheet(driver, data):
     """
     Locates first element of sheet's body, populates sheet
     """
-    # Locate first element, xpath points to first date field, get attribute to get correct id
+    # Locate first element, parses for first date field, which should be first cell in form, get attribute to get correct id
     driver.implicitly_wait(4)
-    first_element = driver.find_element(By.XPATH, "/html/body/main/div/div/div[2]/form/div[4]/div[1]/div[3]/div/span[14]/span/input[2]")
+    first_element = driver.find_element(By.CSS_SELECTOR, "[data-field-type='DateField']")
     current_id = int(first_element.get_attribute("data-field-id"))
     # these are the form input types corresponding to each column of the form, here to help specify xpath
     types = ["input", "textarea", "textarea", "select", "textarea", "textarea"]
