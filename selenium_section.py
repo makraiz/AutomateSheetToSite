@@ -27,7 +27,11 @@ def fill_name(driver, user_info):
     driver.implicitly_wait(4)
     driver.find_element(By.ID, "recipient_name").send_keys(user_info['name'])
     driver.find_element(By.ID, "recipient_email").send_keys(user_info['email'])
+    driver.implicitly_wait(8)
+    if driver.find_element(By.ID, "pendo-close-guide-58243f9f"):
+        check_for_notice(driver)
     driver.find_element(By.NAME, "button").click()
+
     return
 
 
@@ -47,3 +51,10 @@ def fill_sheet(driver, data):
             driver.find_element(By.XPATH, xpath).send_keys(value)
             current_id += 1
     return
+
+def check_for_notice(driver):
+    """
+    Resolves edge case where there is a pop-up obstructing the program from proceeding
+    """
+    check_input = driver.find_element(By.ID, "pendo-close-guide-58243f9f")
+    check_input.click()
