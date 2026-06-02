@@ -28,7 +28,7 @@ def fill_name(driver, user_info):
     driver.find_element(By.ID, "recipient_name").send_keys(user_info['name'])
     driver.find_element(By.ID, "recipient_email").send_keys(user_info['email'])
     driver.implicitly_wait(8)
-    if driver.find_element(By.ID, "pendo-close-guide-58243f9f"):
+    if driver.find_element(By.CLASS_NAME, "_pendo-close-guide"):
         check_for_notice(driver)
     driver.find_element(By.NAME, "button").click()
 
@@ -56,5 +56,5 @@ def check_for_notice(driver):
     """
     Resolves edge case where there is a pop-up obstructing the program from proceeding
     """
-    check_input = driver.find_element(By.ID, "pendo-close-guide-58243f9f")
+    check_input = driver.find_element(By.CLASS_NAME, "_pendo-close-guide")
     check_input.click()
