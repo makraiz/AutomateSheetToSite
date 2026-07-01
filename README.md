@@ -7,3 +7,6 @@ The program is compiled into a single executable file found within the Executabl
 I have only tested this with Chrome, .xlsx spreadsheet files, and I have not done any data validation or anything yet, so this is a pretty fragile program.
 
 Let me know if you find any bugs, but I can't guarantee I'll get to them :P
+
+
+http://wiki.mhusd.org:3000/en/internal/Other/Automation/Mileage-Sheet-Automation-Tool
